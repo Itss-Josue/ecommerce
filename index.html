@@ -116,33 +116,32 @@ Descubre la combinación perfecta de estilo y comodidad con nuestra nueva colecc
           </p>
 
           <div class="time">
-            <div class="imagen">              
-                <img src="/assets/images/carrito-de-compras.png" alt="">             
-            </div>
-            <h2>Invierno 20% OFF</h2>            
-            <small>Aprovecha lso super precios<strong> Desc!</strong></small>
+  <div class="imagen">              
+    <img src="/assets/images/carrito-de-compras.png" alt="">             
+  </div>
 
-            <div class="descuento">
-              <div class="content-cero">
-                <h3 id="dia">00</h3>
-                <small>Días</small>
-              </div>
-              <div class="content">
-                <h3 id="hora">00</h3>
-                <small>Horas</small>
-              </div>
-              <div class="content">
-                <h3 id="minuto">00</h3>
-                <small>Minutos</small>
-              </div>
-              <div class="content">
-                <h3 id="segundo">00</h3>
-                <small>segundos</small>
-              </div>
+  <h2>Invierno 20% OFF</h2>            
+  <small>Aprovecha los súper precios <strong>¡Desc!</strong></small>
 
-            </div>
-
-          </div>
+  <div class="descuento">
+    <div class="content-cero">
+      <h3 id="dia">00</h3>
+      <small>Días</small>
+    </div>
+    <div class="content">
+      <h3 id="hora">00</h3>
+      <small>Horas</small>
+    </div>
+    <div class="content">
+      <h3 id="minuto">00</h3>
+      <small>Minutos</small>
+    </div>
+    <div class="content">
+      <h3 id="segundo">00</h3>
+      <small>Segundos</small>
+    </div>
+  </div>
+</div>
 
           <button class="btn btn-primary">
             <span>Comprar ahora</span>
@@ -1032,3 +1031,34 @@ Descubre la combinación perfecta de estilo y comodidad con nuestra nueva colecc
 </body>
 
 </html>
+
+<!-- JavaScript funcional -->
+<script>
+  // Establecer la fecha de finalización (puedes cambiarla)
+  const fechaFin = new Date("2025-08-01T23:59:59").getTime();
+
+  const cuentaRegresiva = setInterval(() => {
+    const ahora = new Date().getTime();
+    const diferencia = fechaFin - ahora;
+
+    if (diferencia <= 0) {
+      clearInterval(cuentaRegresiva);
+      document.getElementById("dia").textContent = "00";
+      document.getElementById("hora").textContent = "00";
+      document.getElementById("minuto").textContent = "00";
+      document.getElementById("segundo").textContent = "00";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("dia").textContent = dias.toString().padStart(2, "0");
+    document.getElementById("hora").textContent = horas.toString().padStart(2, "0");
+    document.getElementById("minuto").textContent = minutos.toString().padStart(2, "0");
+    document.getElementById("segundo").textContent = segundos.toString().padStart(2, "0");
+
+  }, 1000);
+</script>
