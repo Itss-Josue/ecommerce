@@ -635,6 +635,50 @@ Descubre la combinación perfecta de estilo y comodidad con nuestra nueva colecc
       -->
 
       <section class="section service">
+        <style>
+          .collection-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: end;
+  padding: 20px;
+  color: #fff;
+  position: relative;
+}
+.collection-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.collection-card h3 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.btn.btn-secondary {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+
+.btn.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
+}
+
+        </style>
         <div class="container">
 
           <ul class="service-list">
@@ -1061,4 +1105,25 @@ Descubre la combinación perfecta de estilo y comodidad con nuestra nueva colecc
     document.getElementById("segundo").textContent = segundos.toString().padStart(2, "0");
 
   }, 1000);
+</script>
+
+<script>
+  // Activar scroll horizontal con rueda del mouse
+  const scrollContainer = document.querySelector(".collection-list.has-scrollbar");
+
+  scrollContainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+  });
+
+  // Animación al cargar
+  document.querySelectorAll(".collection-card").forEach((card, index) => {
+    card.style.opacity = 0;
+    card.style.transform = "translateY(50px)";
+    setTimeout(() => {
+      card.style.transition = "all 0.6s ease";
+      card.style.opacity = 1;
+      card.style.transform = "translateY(0)";
+    }, 200 * index);
+  });
 </script>
