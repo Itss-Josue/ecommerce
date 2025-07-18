@@ -198,6 +198,27 @@
     .back-button a:hover {
       background-color: #1a252f;
     }
+
+    /* Estilos para los mensajes de confirmación */
+    .success-message {
+      background-color: #d4edda;
+      color: #155724;
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #c3e6cb;
+      display: none;
+    }
+
+    .error-message {
+      background-color: #f8d7da;
+      color: #721c24;
+      padding: 12px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      border: 1px solid #f5c6cb;
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -208,7 +229,14 @@
     <div class="contact-section">
       <!-- Formulario -->
       <div class="form-container">
-        <form action="mailto:arimodas21@gmail.com" method="POST" enctype="text/plain">
+        <div id="successMessage" class="success-message">
+          ¡Mensaje enviado exitosamente! Nos pondremos en contacto contigo pronto.
+        </div>
+        <div id="errorMessage" class="error-message">
+          Hubo un error al enviar el mensaje. Por favor, inténtalo de nuevo.
+        </div>
+        
+        <form id="contactForm">
           <label for="name">Nombre completo</label>
           <input type="text" id="name" name="name" required>
 
@@ -241,12 +269,62 @@
     </div>
   </div>
 
-  
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Obtener los datos del formulario
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const order = formData.get('order');
+      const message = formData.get('message');
+      
+      // Crear el asunto y cuerpo del email
+      const subject = `Nuevo mensaje de contacto - ${name}`;
+      const body = `
+Nombre: ${name}
+Email: ${email}
+Número de pedido: ${order || 'No especificado'}
+
+Mensaje:
+${message}
+
+---
+Este mensaje fue enviado desde el formulario de contacto de Athenas.
+      `.trim();
+      
+      // Crear el enlace mailto
+      const mailtoLink = `mailto:josuegomezc21@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      try {
+        // Abrir el cliente de correo
+        window.location.href = mailtoLink;
+        
+        // Mostrar mensaje de éxito
+        document.getElementById('successMessage').style.display = 'block';
+        document.getElementById('errorMessage').style.display = 'none';
+        
+        // Limpiar el formulario
+        this.reset();
+        
+        // Ocultar el mensaje después de 5 segundos
+        setTimeout(() => {
+          document.getElementById('successMessage').style.display = 'none';
+        }, 5000);
+        
+      } catch (error) {
+        // Mostrar mensaje de error
+        document.getElementById('errorMessage').style.display = 'block';
+        document.getElementById('successMessage').style.display = 'none';
+        
+        setTimeout(() => {
+          document.getElementById('errorMessage').style.display = 'none';
+        }, 5000);
+      }
+    });
+  </script>
+
 </body>
 
-
 </html>
-
-
-
-
