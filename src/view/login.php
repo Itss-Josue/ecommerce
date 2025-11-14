@@ -382,16 +382,10 @@
           <div class="logo-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>
-          <div class="logo-text">SIRE</div>
+          <div class="logo-text">Webconapi</div>
         </div>
-        <h1 class="brand-title">Sistema Integral de Registro Estudiantil</h1>
-        <p class="brand-subtitle">Plataforma educativa para la gestión académica institucional completa y eficiente.</p>
         
-        <ul class="features">
-          <li><i class="fas fa-check-circle"></i> Gestión integral de estudiantes</li>
-          <li><i class="fas fa-check-circle"></i> Control académico y calificaciones</li>
-          <li><i class="fas fa-check-circle"></i> Reportes en tiempo real</li>
-        </ul>
+       
       </div>
     </div>
     
