@@ -27,7 +27,7 @@ try {
         public function procesar($tipo) {
             switch($tipo) {
                 case 'verificar_conexion':
-                    return $this->verificarConexion();
+                    return $this->verificar_Conexion();
                 case 'obtener_clientes':
                     return $this->obtenerClientes();
                 case 'obtener_proyectos':
@@ -39,7 +39,7 @@ try {
             }
         }
 
-        private function verificarConexion() {
+        private function verificar_Conexion() {
             try {
                 // Verificar conexión a la base de datos
                 require_once __DIR__ . '/../library/conexion_webcon.php';
