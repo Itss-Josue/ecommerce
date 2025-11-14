@@ -26,14 +26,13 @@ function cargarTokenActual() {
     .then(data => {
         if (data.status) {
             document.getElementById('tokenInput').value = data.token;
-<<<<<<< HEAD
-=======
+
+
             tokenOriginal = data.token;
             
             // ========== NUEVO: Almacenar token automáticamente ==========
             almacenarTokenAutomatico(data.token);
             mostrarMensaje('Token cargado y almacenado automáticamente', 'success');
->>>>>>> 26df3c031386474b0b67401a38a6c7b9cba7864d
         } else {
             mostrarMensaje('Error al cargar token: ' + data.msg, 'danger');
         }
@@ -102,7 +101,7 @@ function copiarToken() {
     mostrarMensaje('Token copiado al portapapeles', 'success');
 }
 
-<<<<<<< HEAD
+
 function mostrarMensaje(mensaje, tipo) {
     const mensajeDiv = document.getElementById('mensaje');
     mensajeDiv.innerHTML = `
@@ -121,7 +120,7 @@ function mostrarMensaje(mensaje, tipo) {
             alert.remove();
         }
     }, 5000);
-=======
+
 // ========== NUEVAS FUNCIONES PARA SISTEMA AUTOMÁTICO ==========
 
 // Función para almacenar token automáticamente
@@ -180,11 +179,10 @@ function actualizarIndicadorToken() {
 function irAlAPI() {
     window.open(base_url + 'src/view/apiestudiante.php', '_blank');
 }
-
 // Función para eliminar token almacenado
 function eliminarTokenAlmacenado() {
     localStorage.removeItem('api_token_sire2');
-    mostrarMensaje('Token eliminado del almacenamiento automático', 'warning');
+    console.log('🗑️ Token almacenado eliminado');
     actualizarIndicadorToken();
->>>>>>> 26df3c031386474b0b67401a38a6c7b9cba7864d
+}
 }
